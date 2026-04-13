@@ -149,6 +149,11 @@ async function sendData(){
         body: JSON.stringify(payload),
       });
       if(!resp.ok) throw new Error('HTTP '+resp.status);
+      // Apps Script renvoie toujours HTTP 200 même en cas d'erreur interne.
+      // On vérifie le champ `ok` du JSON pour détecter les vraies erreurs
+      // (openById, sheet non partagé, onglet inexistant, etc.).
+      const result = await resp.json().catch(() => ({}));
+      if(result.ok === false) throw new Error(result.error || 'Apps Script a renvoyé une erreur');
     }
     counters[selType]++;
     saveCounters();
