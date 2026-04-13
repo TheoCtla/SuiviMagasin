@@ -70,19 +70,19 @@ const THEMES = {
 //    2. Ajouter les magasins dans CLIENTS en pointant sur `brand: "<nouvel-id>"`
 //    3. Pas besoin d'un nouveau Apps Script ni d'un nouveau déploiement.
 // ────────────────────────────────────────────────────────────────
-const STATS_URL = "https://script.google.com/macros/s/AKfycby3EgD4GjmaSbBxNZrvL0K8MRD9f_tiL3vMRfs2ryZL0DkBlUJAa9Uk6OHE7xCPuyBn/exec";
+const STATS_URL = "https://script.google.com/macros/s/AKfycbz4mh3DJGl6rNLBdg25L7RQv6VXFOSQ0FfzZHp2ljgyJCXvdRFUWhNonoV6YMuDh3Kw/exec";
 
 const CLIENTS = {
   "france-literie-perpignan": {
     brand:    "france-literie",
     city:     "Perpignan",
-    sheetId:  "https://docs.google.com/spreadsheets/d/1CZ-X8cjXfp66dGMK8ub58cv-LoC8sraCsJdGCyhM1mc/edit?usp=drive_link",            // ← À REMPLIR : ID du sheet FL Perpi
+    sheetId:  "1CZ-X8cjXfp66dGMK8ub58cv-LoC8sraCsJdGCyhM1mc",
     statsUrl: STATS_URL,
   },
   "france-literie-antibes-vallauris": {
     brand:    "france-literie",
     city:     "Antibes Vallauris",
-    sheetId:  "https://docs.google.com/spreadsheets/d/1BK8QX5Nh-SSWQcGK7QG_vgMDizq_r8KL21pWiEtmQKc/edit?usp=sharing",            // ← À REMPLIR : ID du sheet FL Antibes Vallauris
+    sheetId:  "1BK8QX5Nh-SSWQcGK7QG_vgMDizq_r8KL21pWiEtmQKc",
     statsUrl: STATS_URL,
   },
 };
