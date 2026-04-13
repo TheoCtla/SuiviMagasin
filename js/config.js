@@ -82,7 +82,7 @@ const CLIENTS = {
   "france-literie-antibes-vallauris": {
     brand:    "france-literie",
     city:     "Antibes Vallauris",
-    sheetId:  "https://docs.google.com/spreadsheets/d/1BK8QX5Nh-SSWQcGK7QG_vgMDizq_r8KL21pWiEtmQKc/edit?usp=drive_link",            // ← À REMPLIR : ID du sheet FL Antibes Vallauris
+    sheetId:  "https://docs.google.com/spreadsheets/d/1BK8QX5Nh-SSWQcGK7QG_vgMDizq_r8KL21pWiEtmQKc/edit?usp=sharing",            // ← À REMPLIR : ID du sheet FL Antibes Vallauris
     statsUrl: STATS_URL,
   },
 };
