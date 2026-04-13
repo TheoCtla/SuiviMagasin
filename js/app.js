@@ -25,11 +25,25 @@ function switchTab(tab) {
 
 // ── Sync hauteur si embarquée en iframe ────────────────
 (function() {
+  // Actif uniquement quand la page est dans un iframe
+  if (window.parent === window) return;
+
+  // Désactive `min-height: 100vh` sur le body : à l'intérieur d'un iframe,
+  // 100vh = hauteur de l'iframe, donc chaque fois que le parent agrandit
+  // l'iframe, le body grossit aussi → boucle infinie de redimensionnement.
+  document.body.style.minHeight = '0';
+
+  var lastSent = 0;
   function sendHeight() {
     var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    if (h === lastSent) return;  // debounce : rien à envoyer si inchangé
+    lastSent = h;
     window.parent.postMessage({ type: 'resize', height: h }, '*');
   }
+
   sendHeight();
   window.addEventListener('resize', sendHeight);
-  new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+  new MutationObserver(sendHeight).observe(document.body, {
+    childList: true, subtree: true, attributes: true
+  });
 })();

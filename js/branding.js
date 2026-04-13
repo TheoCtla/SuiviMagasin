@@ -22,10 +22,16 @@ const CONFIG = window.CONFIG;
     }
   }
 
-  // Nom du magasin (texte affiché à droite du logo)
+  // Nom du magasin (texte affiché à droite du logo) + ville en sous-titre
   if(theme.brandHtml){
     const storeName = document.querySelector('.store-name');
-    if(storeName) storeName.innerHTML = theme.brandHtml;
+    if(storeName){
+      const client = window.CLIENT || {};
+      const citySub = client.city
+        ? `<span class="sub">${client.city}</span>`
+        : '';
+      storeName.innerHTML = theme.brandHtml + citySub;
+    }
   }
 
   // Texte de fallback du logo (initiales)
