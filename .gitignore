@@ -23,8 +23,7 @@ node_modules/
 # Agents
 .claude/
 
-# Sauvegarde
+# Fichiers locaux non versionnés
 sauvegarde.html
-duplicationSheet.js
-appscript.jsappscript.js
-duplicationSheet.js
+appscript.js
+dupplicationSheet.js
