@@ -22,15 +22,25 @@ const CONFIG = window.CONFIG;
     }
   }
 
-  // Nom du magasin (texte affiché à droite du logo) + ville en sous-titre
-  if(theme.brandHtml){
+  // Nom du magasin (texte affiché à droite du logo)
+  //
+  // Deux modes :
+  //   - Par défaut        : brandHtml (nom de l'enseigne) + ville en sous-titre
+  //   - cityAsMain: true  : la ville devient le titre principal (logo suffit
+  //                         à identifier l'enseigne, ex: Emma)
+  {
     const storeName = document.querySelector('.store-name');
-    if(storeName){
-      const client = window.CLIENT || {};
-      const citySub = client.city
-        ? `<span class="sub">${client.city}</span>`
-        : '';
-      storeName.innerHTML = theme.brandHtml + citySub;
+    const client = window.CLIENT || {};
+    if (storeName) {
+      if (theme.cityAsMain && client.city) {
+        storeName.innerHTML =
+          `<span style="color:var(--muted)">${client.city.toUpperCase()}</span>`;
+      } else if (theme.brandHtml) {
+        const citySub = client.city
+          ? `<span class="sub">${client.city}</span>`
+          : '';
+        storeName.innerHTML = theme.brandHtml + citySub;
+      }
     }
   }
 

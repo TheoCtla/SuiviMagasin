@@ -39,7 +39,9 @@ const THEMES = {
 
   "emma": {
     brandName: "Emma",
-    brandHtml: '<span class="highlight">EMMA</span>',
+    // Pas de brandHtml : le logo Emma est déjà explicite, on affiche
+    // juste la ville en grand grâce à cityAsMain.
+    cityAsMain: true,
     logoUrl:   "img/imgEmma.png",
     vars: {
       // Background — noir neutre (match le footer du site emma-matelas.fr)
