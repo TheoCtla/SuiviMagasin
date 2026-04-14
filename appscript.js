@@ -51,9 +51,13 @@ function doGet(e) {
 
     let dateStr;
     if (typeof rawDate === "string" && rawDate.includes("T")) {
+      // Format ISO : "2026-03-30T10:37:50.980+02:00"
       dateStr = rawDate.split("T")[0];
     } else if (typeof rawDate === "string" && rawDate.includes("/")) {
-      const [d, m, y] = rawDate.split("/");
+      // Format FR : "13/04/2026" ou "13/04/2026 15:03:34"
+      // On retire l'éventuelle partie heure avant de splitter sur /
+      const datePart = rawDate.split(" ")[0];
+      const [d, m, y] = datePart.split("/");
       dateStr = `${y}-${m}-${d}`;
     } else if (rawDate instanceof Date) {
       dateStr = Utilities.formatDate(rawDate, Session.getScriptTimeZone(), "yyyy-MM-dd");
@@ -105,14 +109,14 @@ function doPost(e) {
     const sheet = _openSheet(data.sheetId);
 
     sheet.appendRow([
-      new Date(),             // A — date
-      data.heure   || "",     // B
-      data.jour    || "",     // C
-      data.type    || "",     // D
-      data.source  || "",     // E
-      data.axe     || "",     // F
-      data.ca      || "",     // G
-      data.magasin || ""      // H
+      new Date().toISOString(), // A — date ISO (parsée sans ambiguïté par doGet)
+      data.heure   || "",       // B
+      data.jour    || "",       // C
+      data.type    || "",       // D
+      data.source  || "",       // E
+      data.axe     || "",       // F
+      data.ca      || "",       // G
+      data.magasin || ""        // H
     ]);
 
     return ContentService
