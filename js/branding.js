@@ -49,4 +49,20 @@ const CONFIG = window.CONFIG;
   if(fb && theme.brandName){
     fb.textContent = theme.brandName.split(' ').map(w=>w[0]).join('').slice(0,2);
   }
+
+  // Génération des boutons "type de produit" (axes) depuis theme.axes
+  // → chaque enseigne définit sa propre liste (literie, cuisine, etc.)
+  const axesGrid = document.getElementById('axes-grid');
+  if (axesGrid && Array.isArray(theme.axes)) {
+    axesGrid.innerHTML = theme.axes.map(a => {
+      // Échappe les apostrophes dans le label pour le onclick
+      const safeLabel = (a.label || '').replace(/'/g, "\\'");
+      const display   = a.display || a.label || '';
+      return `<button class="card-btn compact" data-axe="${a.key}" `
+           + `onclick="selectAxe('${safeLabel}',this)">`
+           + `<span class="icon">${a.icon || ''}</span>`
+           + `<span class="label">${display}</span>`
+           + `</button>`;
+    }).join('');
+  }
 })();

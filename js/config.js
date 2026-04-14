@@ -10,11 +10,36 @@
 //  ► Voir la doc complète au-dessus de const CLIENTS.
 // ════════════════════════════════════════════════════════════════
 
+// ────────────────────────────────────────────────────────────────
+//  Listes d'axes (type de produit) par secteur d'activité.
+//  Chaque entrée : { key (data-attr), label (envoyé au sheet),
+//                    display (HTML affiché, <br> autorisé), icon }
+//  Partagées entre plusieurs enseignes (ex: FL + Emma = literie).
+// ────────────────────────────────────────────────────────────────
+const AXES_LITERIE = [
+  { key: "coffre",          label: "Lit Coffre",        display: "Lit<br>Coffre",       icon: "🛏️" },
+  { key: "motorise",        label: "Lit Motorisé",      display: "Lit<br>Motorisé",     icon: "⚙️" },
+  { key: "matelas",         label: "Matelas",           icon: "🌙" },
+  { key: "linge",           label: "Linge de Maison",   display: "Linge de<br>Maison",  icon: "🧺" },
+  { key: "oreiller",        label: "Oreillers",         icon: "☁️" },
+  { key: "sommier-matelas", label: "Sommier + Matelas", display: "Sommier +<br>Matelas", icon: "🛏️" },
+];
+
+const AXES_CUISINE = [
+  { key: "cuisine-complete", label: "Cuisine complète", display: "Cuisine<br>complète", icon: "🏠" },
+  { key: "electromenager",   label: "Électroménager",   icon: "🔌" },
+  { key: "plan-travail",     label: "Plan de travail",  display: "Plan de<br>travail",  icon: "🪨" },
+  { key: "ilot",             label: "Îlot central",     display: "Îlot<br>central",     icon: "🍳" },
+  { key: "rangement",        label: "Rangement",        icon: "📦" },
+  { key: "dressing",         label: "Dressing",         icon: "👔" },
+];
+
 const THEMES = {
   "france-literie": {
     brandName: "France Literie",
     brandHtml: '<span>FRANCE </span><span class="highlight">LITERIE</span>',
     logoUrl:   "img/imgFL.jpeg",
+    axes:      AXES_LITERIE,
     vars: {
       // Background (dark mode bordeaux)
       "--bg":           "#1e1007",
@@ -43,6 +68,7 @@ const THEMES = {
     // juste la ville en grand grâce à cityAsMain.
     cityAsMain: true,
     logoUrl:   "img/imgEmma.png",
+    axes:      AXES_LITERIE,
     vars: {
       // Background — noir neutre (match le footer du site emma-matelas.fr)
       "--bg":           "#121212",
@@ -69,6 +95,7 @@ const THEMES = {
     brandName: "Sud Cuisine",
     brandHtml: '<span>SUD </span><span class="highlight">CUISINE</span>',
     logoUrl:   "img/imgSudCuisine.png",
+    axes:      AXES_CUISINE,
     vars: {
       // Background — warm charcoal (olive/kaki foncé)
       "--bg":           "#2f2e26",

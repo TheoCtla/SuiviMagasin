@@ -115,14 +115,8 @@
         <span class="recap-badge badge-vente">Vente Magasin</span>
       </div>
       <div class="section-label">03 — Type de produit</div>
-      <div class="btn-grid cols-3-auto">
-        <button class="card-btn compact" data-axe="coffre"    onclick="selectAxe('Lit Coffre',this)"><span class="icon">🛏️</span><span class="label">Lit<br>Coffre</span></button>
-        <button class="card-btn compact" data-axe="motorise"  onclick="selectAxe('Lit Motorisé',this)"><span class="icon">⚙️</span><span class="label">Lit<br>Motorisé</span></button>
-        <button class="card-btn compact" data-axe="matelas"   onclick="selectAxe('Matelas',this)"><span class="icon">🌙</span><span class="label">Matelas</span></button>
-        <button class="card-btn compact" data-axe="linge"     onclick="selectAxe('Linge de Maison',this)"><span class="icon">🧺</span><span class="label">Linge de<br>Maison</span></button>
-        <button class="card-btn compact" data-axe="oreiller"  onclick="selectAxe('Oreillers',this)"><span class="icon">☁️</span><span class="label">Oreillers</span></button>
-        <button class="card-btn compact" data-axe="sommier-matelas" onclick="selectAxe('Sommier + Matelas',this)"><span class="icon">🛏️</span><span class="label">Sommier +<br>Matelas</span></button>
-      </div>
+      <!-- Boutons générés dynamiquement par branding.js depuis theme.axes -->
+      <div class="btn-grid cols-3-auto" id="axes-grid"></div>
 
       <!-- Chiffre d'affaires -->
       <div class="ca-field" id="ca-field">
