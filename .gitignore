@@ -24,6 +24,4 @@ node_modules/
 .claude/
 
 # Fichiers locaux non versionnés
-sauvegarde.html
-appscript.js
-dupplicationSheet.js
+scripts/
