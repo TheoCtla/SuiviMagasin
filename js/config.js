@@ -14,28 +14,82 @@ const THEMES = {
   "france-literie": {
     brandName: "France Literie",
     brandHtml: '<span>FRANCE </span><span class="highlight">LITERIE</span>',
-    // logoUrl: laissé vide → on garde le logo inline du HTML par défaut
-    logoUrl: null,
+    logoUrl:   "img/imgFL.jpeg",
     vars: {
-      "--bg":          "#1e1007",
-      "--surface":     "#2d1a0e",
-      "--surface2":    "#3a2212",
-      "--surface3":    "#4a2d18",
-      "--border":      "#5e3820",
-      "--accent":      "#c3cc47",
-      "--accent-glow": "rgba(195,204,71,0.15)",
-      "--accent2":     "#e8734a",
-      "--accent3":     "#7eb8c9",
-      "--text":        "#f6f1e8",
-      "--muted":       "#7a6050",
-      "--success":     "#6dba8a",
-      "--silver":      "#c5b8a5",
-      "--font-display":"'Playfair Display', serif",
-      "--font-mono":   "'DM Mono', monospace",
+      // Background (dark mode bordeaux)
+      "--bg":           "#1e1007",
+      "--surface":      "#2d1a0e",
+      "--surface2":     "#3a2212",
+      "--surface3":     "#4a2d18",
+      "--border":       "#5e3820",
+      // Texte
+      "--text":         "#f6f1e8",
+      "--silver":       "#c5b8a5",
+      "--muted":        "#7a6050",
+      // Accent (or chaud)
+      "--accent-rgb":   "195 204 71",
+      "--accent-hover": "#d4dc52",
+      "--btn-text":     "#2a1c10",
+      // Sémantiques (mêmes pour toutes les enseignes)
+      "--accent2":      "#e8734a",
+      "--accent3":      "#7eb8c9",
+      "--success":      "#6dba8a",
     }
   },
-  // Pour ajouter une enseigne : dupliquer le bloc ci-dessus, changer
-  // les couleurs / le logo / le brandHtml.
+
+  "emma": {
+    brandName: "Emma",
+    brandHtml: '<span class="highlight">EMMA</span>',
+    logoUrl:   "img/imgEmma.png",
+    vars: {
+      // Background — noir neutre (match le footer du site emma-matelas.fr)
+      "--bg":           "#121212",
+      "--surface":      "#1c1c1c",
+      "--surface2":     "#262626",
+      "--surface3":     "#303030",
+      "--border":       "#3a3a3a",
+      // Texte (blanc cassé neutre, pas de teinte chaude)
+      "--text":         "#f5f5f5",
+      "--silver":       "#b8b8b8",
+      "--muted":        "#777777",
+      // Accent (orange Emma officiel #FF6B35 = 255 107 53)
+      "--accent-rgb":   "255 107 53",
+      "--accent-hover": "#ff8555",
+      "--btn-text":     "#ffffff",
+      // Sémantiques (mêmes pour toutes les enseignes)
+      "--accent2":      "#e8734a",
+      "--accent3":      "#5fa8d3",
+      "--success":      "#6dba8a",
+    }
+  },
+
+  "sud-cuisine": {
+    brandName: "Sud Cuisine",
+    brandHtml: '<span>SUD </span><span class="highlight">CUISINE</span>',
+    logoUrl:   "img/imgSudCuisine.png",
+    vars: {
+      // Background — warm charcoal (olive/kaki foncé)
+      "--bg":           "#2f2e26",
+      "--surface":      "#3a3931",
+      "--surface2":     "#46443a",
+      "--surface3":     "#524f44",
+      "--border":       "#605d51",
+      // Texte (clair chaud, cohérent avec le fond warm)
+      "--text":         "#f2efe6",
+      "--silver":       "#b8b3a6",
+      "--muted":        "#787567",
+      // Accent (rouge Sud Cuisine #c31b21 = 195 27 33)
+      "--accent-rgb":   "195 27 33",
+      "--accent-hover": "#e02a31",
+      "--btn-text":     "#ffffff",
+      // Quadrillage gris clair (blanc translucide sur fond sombre)
+      "--grid-line":    "rgb(255 255 255 / 0.035)",
+      // Sémantiques (mêmes pour toutes les enseignes)
+      "--accent2":      "#e8734a",
+      "--accent3":      "#5fa8d3",
+      "--success":      "#6dba8a",
+    }
+  },
 };
 
 // ────────────────────────────────────────────────────────────────
@@ -73,16 +127,118 @@ const THEMES = {
 const STATS_URL = "https://script.google.com/macros/s/AKfycbz4mh3DJGl6rNLBdg25L7RQv6VXFOSQ0FfzZHp2ljgyJCXvdRFUWhNonoV6YMuDh3Kw/exec";
 
 const CLIENTS = {
-  "france-literie-perpignan": {
+
+  // ── FRANCE LITERIE ──────────────────────────────────────────────────────
+  "france-literie-aix-en-provence": {
     brand:    "france-literie",
-    city:     "Perpignan",
-    sheetId:  "1CZ-X8cjXfp66dGMK8ub58cv-LoC8sraCsJdGCyhM1mc",
+    city:     "Aix-en-Provence",
+    sheetId:  "1nDF0toMR2tnN5xvod1AdkZjg_aXWlodLojrHfEA7Dsc",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-annemasse": {
+    brand:    "france-literie",
+    city:     "Annemasse",
+    sheetId:  "",
     statsUrl: STATS_URL,
   },
   "france-literie-antibes-vallauris": {
     brand:    "france-literie",
     city:     "Antibes Vallauris",
     sheetId:  "1BK8QX5Nh-SSWQcGK7QG_vgMDizq_r8KL21pWiEtmQKc",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-champagne": {
+    brand:    "france-literie",
+    city:     "Champagne",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-dijon": {
+    brand:    "france-literie",
+    city:     "Dijon",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-perpignan": {
+    brand:    "france-literie",
+    city:     "Perpignan",
+    sheetId:  "1CZ-X8cjXfp66dGMK8ub58cv-LoC8sraCsJdGCyhM1mc",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-saint-priest-et-givors": {
+    brand:    "france-literie",
+    city:     "Saint-Priest-et-Givors",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+
+  // ── EMMA ──────────────────────────────────────────────────────────────
+  "emma-merignac": {
+    brand:    "emma",
+    city:     "Merignac",
+    sheetId:  "",            // vide → la saisie échouera mais l'aperçu visuel marche
+    statsUrl: STATS_URL,
+  },
+  "emma-nantes": {
+    brand:    "emma",
+    city:     "Nantes",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "emma-perpignan": {
+    brand:    "emma",
+    city:     "Perpignan",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "emma-vendenheim": {
+    brand:    "emma",
+    city:     "Vendenheim",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+
+  // ── SUD CUISINE ──────────────────────────────────────────────────────────────
+  "sud-cuisine-tarbes": {
+    brand:    "sud-cuisine",
+    city:     "Tarbes",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-bayonne": {
+    brand:    "sud-cuisine",
+    city:     "Bayonne",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-merignac": {
+    brand:    "sud-cuisine",
+    city:     "Merignac",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-rodez": {
+    brand:    "sud-cuisine",
+    city:     "Rodez",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-condom": {
+    brand:    "sud-cuisine",
+    city:     "Condom",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-yzosse": {
+    brand:    "sud-cuisine",
+    city:     "Yzosse",
+    sheetId:  "",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-langon": {
+    brand:    "sud-cuisine",
+    city:     "Langon",
+    sheetId:  "",
     statsUrl: STATS_URL,
   },
 };

@@ -4,8 +4,20 @@
   --surface2: #3a2212;
   --surface3: #4a2d18;
   --border: #5e3820;
-  --accent: #c3cc47;       /* or chaud France Literie */
-  --accent-glow: rgba(195,204,71,0.15);
+
+  /* Accent : couleur principale de l'enseigne.
+     --accent-rgb est le triplet RGB sans alpha, utilisé pour générer
+     dynamiquement les variations rgba (glow, fonds translucides, etc.). */
+  --accent-rgb: 195 204 71;
+  --accent: rgb(var(--accent-rgb));       /* or chaud France Literie */
+  --accent-hover: #d4dc52;                /* version hover, légèrement plus claire */
+  --accent-glow: rgb(var(--accent-rgb) / 0.15);
+  --btn-text: #2a1c10;                    /* texte des boutons posés sur --accent */
+
+  /* Couleur du quadrillage de fond — surchargée par thème (visibilité variable
+     selon que le fond est clair ou sombre) */
+  --grid-line: rgb(var(--accent-rgb) / 0.03);
+
   --accent2: #e8734a;
   --accent3: #7eb8c9;
   --text: #f6f1e8;
@@ -37,8 +49,8 @@ body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(195,204,71,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(195,204,71,0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none; z-index: 0;
 }
@@ -46,7 +58,7 @@ body::after {
   content: '';
   position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
   width: 700px; height: 320px;
-  background: radial-gradient(ellipse, rgba(195,204,71,0.09) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgb(var(--accent-rgb) / 0.09) 0%, transparent 70%);
   pointer-events: none; z-index: 0;
 }
 
@@ -60,7 +72,7 @@ header {
 .logo-block { display: flex; align-items: center; gap: 14px; }
 .logo-img {
   height: 52px; width: auto;
-  filter: drop-shadow(0 0 12px rgba(195,204,71,0.35));
+  filter: drop-shadow(0 0 12px rgb(var(--accent-rgb) / 0.35));
 }
 .store-name {
   font-family: var(--font-display);
@@ -170,13 +182,10 @@ header {
 .card-btn.compact { padding: 14px 8px; }
 .card-btn.compact .icon { font-size: 22px; }
 
-/* couleurs par source */
-.card-btn[data-source="google"]:hover,   .card-btn[data-source="google"].selected    { border-color:#4285f4; background:rgba(66,133,244,0.08); }
-.card-btn[data-source="facebook"]:hover, .card-btn[data-source="facebook"].selected  { border-color:#1877f2; background:rgba(24,119,242,0.08); }
-.card-btn[data-source="reco"]:hover,     .card-btn[data-source="reco"].selected      { border-color:#f59e0b; background:rgba(245,158,11,0.08); }
-.card-btn[data-source="autre"]:hover,    .card-btn[data-source="autre"].selected     { border-color:var(--muted); background:rgba(102,102,102,0.08); }
-.card-btn[data-source="saitpas"]:hover,  .card-btn[data-source="saitpas"].selected   { border-color:var(--muted); background:rgba(102,102,102,0.08); }
-.card-btn[data-source="emplacement"]:hover, .card-btn[data-source="emplacement"].selected { border-color:#a78bfa; background:rgba(167,139,250,0.08); }
+/* Les boutons sources héritent du hover par défaut (.card-btn:hover) qui
+   utilise var(--accent), donc la couleur de l'enseigne courante. */
+
+/* Boutons axes (produits) — utilisent la couleur sémantique --success */
 .card-btn[data-axe]:hover, .card-btn[data-axe].selected { border-color:var(--success); background:rgba(109,186,138,0.08); }
 
 .recap-bar {
@@ -186,7 +195,7 @@ header {
   margin-bottom: 20px; font-size: 12px;
 }
 .recap-badge { padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 500; }
-.badge-entree { background: rgba(195,204,71,0.15); color: var(--accent); }
+.badge-entree { background: rgb(var(--accent-rgb) / 0.15); color: var(--accent); }
 .badge-vente  { background: rgba(109,186,138,0.15); color: var(--success); }
 .badge-call   { background: rgba(232,115,74,0.15);  color: var(--accent2); }
 
@@ -217,19 +226,19 @@ header {
   font-weight: 800; color: var(--accent); flex-shrink: 0;
   border-left: 1px solid var(--border);
   height: 100%; display: flex; align-items: center;
-  background: rgba(195,204,71,0.06);
+  background: rgb(var(--accent-rgb) / 0.06);
 }
 
 .confirm-area { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
 
 .btn-confirm {
-  width: 100%; background: var(--accent); color: #2a1c10;
+  width: 100%; background: var(--accent); color: var(--btn-text);
   border: none; border-radius: var(--radius); padding: 20px;
   font-family: var(--font-display); font-size: 18px; font-weight: 800;
   cursor: pointer; transition: all 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.btn-confirm:hover { background: #d4dc52; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(195,204,71,0.4); }
+.btn-confirm:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.4); }
 .btn-confirm:active { transform: scale(0.98); }
 .btn-confirm:disabled { opacity: 0.25; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn-confirm.loading { pointer-events: none; opacity: 0.7; }
@@ -256,7 +265,7 @@ header {
   color: var(--accent2); display: none;
 }
 
-.spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(10,11,15,0.3); border-top-color:#2a1c10; border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; margin-right:8px; }
+.spinner { display:inline-block; width:16px; height:16px; border:2px solid color-mix(in srgb, var(--btn-text) 30%, transparent); border-top-color:var(--btn-text); border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; margin-right:8px; }
 @keyframes spin { to{transform:rotate(360deg)} }
 
 /* Succès */
@@ -300,7 +309,7 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 .dp-trigger-pill:hover { border-color: var(--accent); color: var(--text); }
-.dp-trigger-pill.open { border-color: var(--accent); color: var(--accent); background: rgba(195,204,71,0.06); }
+.dp-trigger-pill.open { border-color: var(--accent); color: var(--accent); background: rgb(var(--accent-rgb) / 0.06); }
 .dp-pill-icon { font-size: 14px; flex-shrink: 0; }
 .dp-pill-label { flex: 1; font-weight: 500; }
 .dp-pill-range { color: var(--accent); font-weight: 500; }
@@ -332,7 +341,7 @@ header {
   text-align: left; transition: all 0.1s ease;
 }
 .dp-sc-btn:hover { color: var(--text); background: rgba(255,255,255,0.03); }
-.dp-sc-btn.active { color: var(--accent); background: rgba(195,204,71,0.07); }
+.dp-sc-btn.active { color: var(--accent); background: rgb(var(--accent-rgb) / 0.07); }
 .dp-sc-radio { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.15s ease; }
 .dp-sc-btn.active .dp-sc-radio { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 5px var(--accent); }
 
@@ -352,8 +361,8 @@ header {
 .dp-day.dp-empty { cursor: default; visibility: hidden; }
 .dp-day.dp-today { color: var(--accent); font-weight: 700; }
 .dp-day.dp-today::after { content:''; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:3px; height:3px; background:var(--accent); border-radius:50%; }
-.dp-day.dp-start, .dp-day.dp-end { background: var(--accent) !important; color: #0a0b0f !important; font-weight: 800; border-radius: 6px; }
-.dp-day.dp-in-range { background: rgba(195,204,71,0.13); color: var(--text); border-radius: 0; }
+.dp-day.dp-start, .dp-day.dp-end { background: var(--accent) !important; color: var(--btn-text) !important; font-weight: 800; border-radius: 6px; }
+.dp-day.dp-in-range { background: rgb(var(--accent-rgb) / 0.13); color: var(--text); border-radius: 0; }
 .dp-day.dp-start { border-radius: 6px 0 0 6px !important; }
 .dp-day.dp-end   { border-radius: 0 6px 6px 0 !important; }
 .dp-day.dp-start.dp-end { border-radius: 6px !important; }
@@ -368,8 +377,8 @@ header {
 .dp-inp { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 7px 10px; color: var(--text); font-family: var(--font-mono); font-size: 12px; outline: none; flex: 1; color-scheme: dark; transition: border-color 0.15s ease; }
 .dp-inp:focus { border-color: var(--accent); }
 .dp-inp-sep { color: var(--muted); flex-shrink: 0; }
-.dp-btn-apply { background: var(--accent); border: none; border-radius: 8px; padding: 9px 20px; color: #2a1c10; font-family: var(--font-display); font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; flex-shrink: 0; }
-.dp-btn-apply:hover { background: #d4dc52; }
+.dp-btn-apply { background: var(--accent); border: none; border-radius: 8px; padding: 9px 20px; color: var(--btn-text); font-family: var(--font-display); font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; flex-shrink: 0; }
+.dp-btn-apply:hover { background: var(--accent-hover); }
 
 /* Stats résultats */
 .stats-period-bar {
@@ -390,7 +399,7 @@ header {
 
 /* KPI CA */
 .kpi-ca-card {
-  background: var(--surface); border: 1px solid rgba(195,204,71,0.3);
+  background: var(--surface); border: 1px solid rgb(var(--accent-rgb) / 0.3);
   border-radius: 12px; padding: 16px 20px;
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: 10px;
