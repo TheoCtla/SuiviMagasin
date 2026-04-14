@@ -193,6 +193,12 @@ const CLIENTS = {
     sheetId:  "1lV4vY1uf-pTiObiMUhrdgJ0wfZlSGdc0zB_Uzb2lllY",
     statsUrl: STATS_URL,
   },
+  "emma-toulouse": {
+    brand:    "emma",
+    city:     "Toulouse",
+    sheetId:  "1Dzc16qUJ4-1eJKpx-8VhqV5SzS7pwmxm1ku-gPThKRo",
+    statsUrl: STATS_URL,
+  },
   "emma-vendenheim": {
     brand:    "emma",
     city:     "Vendenheim",
