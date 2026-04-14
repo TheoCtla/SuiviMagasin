@@ -138,7 +138,7 @@ const CLIENTS = {
   "france-literie-annemasse": {
     brand:    "france-literie",
     city:     "Annemasse",
-    sheetId:  "",
+    sheetId:  "1vJJOdLapoO92nTe1S45y2gXILllFEuuzb-RYU7QmrrI",
     statsUrl: STATS_URL,
   },
   "france-literie-antibes-vallauris": {
@@ -150,13 +150,13 @@ const CLIENTS = {
   "france-literie-champagne": {
     brand:    "france-literie",
     city:     "Champagne",
-    sheetId:  "",
+    sheetId:  "13ikEBZF5uH9S3Q2Z7Tx9ZgtYpyNV7_MWbHBnteQAk8s",
     statsUrl: STATS_URL,
   },
   "france-literie-dijon": {
     brand:    "france-literie",
     city:     "Dijon",
-    sheetId:  "",
+    sheetId:  "1YUWNunyQPk-ZfbTKkt43mVDJ3CrfXV74_vzaK6NPtg0",
     statsUrl: STATS_URL,
   },
   "france-literie-perpignan": {
@@ -168,7 +168,7 @@ const CLIENTS = {
   "france-literie-saint-priest-et-givors": {
     brand:    "france-literie",
     city:     "Saint-Priest-et-Givors",
-    sheetId:  "",
+    sheetId:  "1vdu3gO6W0P3r6k6tWKKYaTFEmn6NTCIkUi9pLiKsIU0",
     statsUrl: STATS_URL,
   },
 
@@ -176,25 +176,25 @@ const CLIENTS = {
   "emma-merignac": {
     brand:    "emma",
     city:     "Merignac",
-    sheetId:  "",            // vide → la saisie échouera mais l'aperçu visuel marche
+    sheetId:  "13oB2IcXGI_wsJQVc7rdedjgvhwwaecG4lr7M2STBkH4",
     statsUrl: STATS_URL,
   },
   "emma-nantes": {
     brand:    "emma",
     city:     "Nantes",
-    sheetId:  "",
+    sheetId:  "1kd-olP2BSXzAVtgQuRbS80pvqkBrTKInOjkxD8dqsgU",
     statsUrl: STATS_URL,
   },
   "emma-perpignan": {
     brand:    "emma",
     city:     "Perpignan",
-    sheetId:  "",
+    sheetId:  "1lV4vY1uf-pTiObiMUhrdgJ0wfZlSGdc0zB_Uzb2lllY",
     statsUrl: STATS_URL,
   },
   "emma-vendenheim": {
     brand:    "emma",
     city:     "Vendenheim",
-    sheetId:  "",
+    sheetId:  "1KFSellFsEEAKpWAAeDJYTDzdu2g1Wq27WER_iIIRr88",
     statsUrl: STATS_URL,
   },
 
@@ -202,43 +202,43 @@ const CLIENTS = {
   "sud-cuisine-tarbes": {
     brand:    "sud-cuisine",
     city:     "Tarbes",
-    sheetId:  "",
+    sheetId:  "1gsfBbiWC_wQb9HdEZ8cNL_0WoFwdLyhCmRj26ImYz9c",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-bayonne": {
     brand:    "sud-cuisine",
     city:     "Bayonne",
-    sheetId:  "",
+    sheetId:  "1R0CUFfAyfoca-Os4BpiXiaLTNVYsqENdbhX8V4k8_pw",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-merignac": {
     brand:    "sud-cuisine",
     city:     "Merignac",
-    sheetId:  "",
+    sheetId:  "18kTiJacH3Fc0Ft2-y5RbSofi6AE8ReDwW5lWysDcVi8",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-rodez": {
     brand:    "sud-cuisine",
     city:     "Rodez",
-    sheetId:  "",
+    sheetId:  "1OVSeC2txci2ngFPtJwN7mydbNc5FZUfsOzHpnODWJsM",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-condom": {
     brand:    "sud-cuisine",
     city:     "Condom",
-    sheetId:  "",
+    sheetId:  "1Zf1v5JF2YzKJkSvKkRV9v48L-a5erAl2Q0pXzWgeqoE",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-yzosse": {
     brand:    "sud-cuisine",
     city:     "Yzosse",
-    sheetId:  "",
+    sheetId:  "1dWmWK-aVj2qQ96uOwswQmBrOCuQPgbLVyo48VKux2xA",
     statsUrl: STATS_URL,
   },
   "sud-cuisine-langon": {
     brand:    "sud-cuisine",
     city:     "Langon",
-    sheetId:  "",
+    sheetId:  "1cGD5DcChQN2XmFgHWyHPCI2yHUS1qGP7DBb3ZVL9iuw",
     statsUrl: STATS_URL,
   },
 };
