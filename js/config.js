@@ -20,18 +20,14 @@ const AXES_LITERIE = [
   { key: "coffre",          label: "Lit Coffre",        display: "Lit<br>Coffre",       icon: "🛏️" },
   { key: "motorise",        label: "Lit Motorisé",      display: "Lit<br>Motorisé",     icon: "⚙️" },
   { key: "matelas",         label: "Matelas",           icon: "🌙" },
-  { key: "linge",           label: "Linge de Maison",   display: "Linge de<br>Maison",  icon: "🧺" },
-  { key: "oreiller",        label: "Oreillers",         icon: "☁️" },
   { key: "sommier-matelas", label: "Sommier + Matelas", display: "Sommier +<br>Matelas", icon: "🛏️" },
+  { key: "autre",           label: "Autre",             icon: "💬" },
 ];
 
 const AXES_CUISINE = [
-  { key: "cuisine-complete", label: "Cuisine complète", display: "Cuisine<br>complète", icon: "🏠" },
-  { key: "electromenager",   label: "Électroménager",   icon: "🔌" },
-  { key: "plan-travail",     label: "Plan de travail",  display: "Plan de<br>travail",  icon: "🪨" },
-  { key: "ilot",             label: "Îlot central",     display: "Îlot<br>central",     icon: "🍳" },
-  { key: "rangement",        label: "Rangement",        icon: "📦" },
-  { key: "dressing",         label: "Dressing",         icon: "👔" },
+  { key: "cuisine",  label: "Cuisine",  icon: "🏠" },
+  { key: "dressing", label: "Dressing", icon: "🗄️" },
+  { key: "autre",    label: "Autre",    icon: "💬" },
 ];
 
 const THEMES = {
@@ -68,7 +64,8 @@ const THEMES = {
     // juste la ville en grand grâce à cityAsMain.
     cityAsMain: true,
     logoUrl:   "img/imgEmma.png",
-    axes:      AXES_LITERIE,
+    // Emma ne vend pas de lit motorisé → on filtre cette entrée
+    axes:      AXES_LITERIE.filter(a => a.key !== "motorise"),
     vars: {
       // Background — noir neutre (match le footer du site emma-matelas.fr)
       "--bg":           "#121212",
@@ -194,10 +191,16 @@ const CLIENTS = {
     sheetId:  "1CZ-X8cjXfp66dGMK8ub58cv-LoC8sraCsJdGCyhM1mc",
     statsUrl: STATS_URL,
   },
-  "france-literie-saint-priest-et-givors": {
+  "france-literie-saint-priest": {
     brand:    "france-literie",
-    city:     "Saint-Priest-et-Givors",
+    city:     "Saint-Priest",
     sheetId:  "1vdu3gO6W0P3r6k6tWKKYaTFEmn6NTCIkUi9pLiKsIU0",
+    statsUrl: STATS_URL,
+  },
+  "france-literie-givors": {
+    brand:    "france-literie",
+    city:     "Givors",
+    sheetId:  "1SvhqSD_Erj4J2WSc1g1ph9jsVX524_5Tb04pXbwNnoc",
     statsUrl: STATS_URL,
   },
 
@@ -274,6 +277,24 @@ const CLIENTS = {
     brand:    "sud-cuisine",
     city:     "Langon",
     sheetId:  "1cGD5DcChQN2XmFgHWyHPCI2yHUS1qGP7DBb3ZVL9iuw",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-aurillac": {
+    brand:    "sud-cuisine",
+    city:     "Aurillac",
+    sheetId:  "1KgOcUPWduzO6tD-B9Mw123pv1Cp0VtwdrmPXVzq5f_8",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-toulouse": {
+    brand:    "sud-cuisine",
+    city:     "Toulouse",
+    sheetId:  "109-xK6S8a6nkG-YjGYSYc1LnZZ79Emy0UeJq3qLDHTA",
+    statsUrl: STATS_URL,
+  },
+  "sud-cuisine-castel": {
+    brand:    "sud-cuisine",
+    city:     "Castel",
+    sheetId:  "1yRP-8FXYGDRODHK2qWsTCvvp6Wik0T_1j4aH1rfiWvg",
     statsUrl: STATS_URL,
   },
 };

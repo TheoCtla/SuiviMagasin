@@ -166,6 +166,31 @@ header {
   .cols-3-auto  { grid-template-columns: repeat(2,1fr); }
 }
 
+/* Layout adaptatif selon le nombre d'axes (appliqué dynamiquement par branding.js) */
+.btn-grid.count-6 { grid-template-columns: repeat(3, 1fr); }
+.btn-grid.count-3 { grid-template-columns: repeat(3, 1fr); }
+.btn-grid.count-4 { grid-template-columns: repeat(2, 1fr); }
+.btn-grid.count-2 { grid-template-columns: repeat(2, 1fr); }
+.btn-grid.count-1 { grid-template-columns: 1fr; }
+
+/* 5 boutons : 3 en haut, 2 en bas plus larges (grille à 6 sous-colonnes) */
+.btn-grid.count-5 { grid-template-columns: repeat(6, 1fr); }
+.btn-grid.count-5 > :nth-child(-n+3) { grid-column: span 2; }
+.btn-grid.count-5 > :nth-child(n+4)  { grid-column: span 3; }
+
+/* Mobile : tout en 2 colonnes, sauf le dernier bouton qui prend toute la largeur
+   quand le nombre est impair (sinon il reste orphelin) */
+@media(max-width:400px){
+  .btn-grid.count-6,
+  .btn-grid.count-5,
+  .btn-grid.count-4,
+  .btn-grid.count-3 { grid-template-columns: repeat(2, 1fr); }
+  .btn-grid.count-5 > :nth-child(-n+3),
+  .btn-grid.count-5 > :nth-child(n+4) { grid-column: auto; }
+  .btn-grid.count-5 > :nth-child(5),
+  .btn-grid.count-3 > :nth-child(3) { grid-column: 1 / -1; }
+}
+
 .card-btn {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 8px; padding: 18px 10px;

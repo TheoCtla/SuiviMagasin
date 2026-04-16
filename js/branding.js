@@ -64,5 +64,8 @@ const CONFIG = window.CONFIG;
            + `<span class="label">${display}</span>`
            + `</button>`;
     }).join('');
+
+    // Classe count-N pour que le CSS adapte la largeur des boutons selon le nombre
+    axesGrid.className = 'btn-grid count-' + theme.axes.length;
   }
 })();
