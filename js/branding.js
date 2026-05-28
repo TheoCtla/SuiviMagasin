@@ -68,4 +68,22 @@ const CONFIG = window.CONFIG;
     // Classe count-N pour que le CSS adapte la largeur des boutons selon le nombre
     axesGrid.className = 'btn-grid count-' + theme.axes.length;
   }
+
+  // Génération des boutons "source" depuis theme.sources
+  // → chaque enseigne définit sa propre liste (FL a 2 sources de plus).
+  // On garde la classe `cols-sources` (grille fixe 3 col / 2 col mobile) :
+  // le sizing des boutons reste identique à l'existant pour toutes les enseignes.
+  const sourcesGrid = document.getElementById('sources-grid');
+  if (sourcesGrid && Array.isArray(theme.sources)) {
+    sourcesGrid.innerHTML = theme.sources.map(s => {
+      // Échappe les apostrophes dans le label pour le onclick
+      const safeLabel = (s.label || '').replace(/'/g, "\\'");
+      const display   = s.display || s.label || '';
+      return `<button class="card-btn" data-source="${s.key}" `
+           + `onclick="selectSource('${safeLabel}',this)">`
+           + `<span class="icon">${s.icon || ''}</span>`
+           + `<span class="label">${display}</span>`
+           + `</button>`;
+    }).join('');
+  }
 })();
