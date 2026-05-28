@@ -30,12 +30,51 @@ const AXES_CUISINE = [
   { key: "autre",    label: "Autre",    icon: "💬" },
 ];
 
+// France Literie = base literie + Linge de lit + Oreiller.
+// Dérivé d'AXES_LITERIE pour éviter toute divergence : on garde l'ordre
+// (coffre, motorisé, matelas, sommier+matelas, linge, oreiller) et "Autre"
+// reste toujours en dernière position.
+const AXES_LITERIE_FL = [
+  ...AXES_LITERIE.filter(a => a.key !== "autre"),
+  { key: "linge",    label: "Linge de lit", display: "Linge<br>de lit", icon: "🧺" },
+  { key: "oreiller", label: "Oreiller",                                 icon: "💤" },
+  AXES_LITERIE.find(a => a.key === "autre"),
+];
+
+// ────────────────────────────────────────────────────────────────
+//  Sources (réponse à "Comment le prospect a connu le magasin ?").
+//  Désormais pilotées par le thème (theme.sources), comme les axes,
+//  pour pouvoir les différencier par enseigne. branding.js génère
+//  les boutons depuis cette liste.
+//  Format identique aux axes : { key, label (envoyé au sheet),
+//                                display (HTML, <br> ok), icon }
+// ────────────────────────────────────────────────────────────────
+const SOURCES = [
+  { key: "google",      label: "Internet (Google)",    display: "Internet<br>(Google)",   icon: "🔍" },
+  { key: "facebook",    label: "Facebook / Instagram", display: "Facebook /<br>Instagram", icon: "📱" },
+  { key: "reco",        label: "Recommandation",       display: "Reco",                    icon: "🤝" },
+  { key: "emplacement", label: "Emplacement",                                              icon: "📍" },
+  { key: "autre",       label: "Autre",                                                    icon: "💬" },
+  { key: "saitpas",     label: "Je ne sais pas",       display: "Je ne<br>sais pas",       icon: "🤷" },
+];
+
+// France Literie = sources de base + Ancien client + Autre Com.
+// Les deux nouvelles sont insérées AVANT les catch-all ("Autre",
+// "Je ne sais pas") pour qu'ils restent en fin de liste.
+const SOURCES_FL = [
+  ...SOURCES.filter(s => !["autre", "saitpas"].includes(s.key)),
+  { key: "ancien-client", label: "Ancien client", display: "Ancien<br>client", icon: "🔁" },
+  { key: "autre-com",     label: "Autre Com",     display: "Autre<br>Com",     icon: "📣" },
+  ...SOURCES.filter(s =>  ["autre", "saitpas"].includes(s.key)),
+];
+
 const THEMES = {
   "france-literie": {
     brandName: "France Literie",
     brandHtml: '<span>FRANCE </span><span class="highlight">LITERIE</span>',
     logoUrl:   "img/imgFL.jpeg",
-    axes:      AXES_LITERIE,
+    axes:      AXES_LITERIE_FL,
+    sources:   SOURCES_FL,
     vars: {
       // Background (dark mode bordeaux)
       "--bg":           "#1e1007",
@@ -66,6 +105,7 @@ const THEMES = {
     logoUrl:   "img/imgEmma.png",
     // Emma ne vend pas de lit motorisé → on filtre cette entrée
     axes:      AXES_LITERIE.filter(a => a.key !== "motorise"),
+    sources:   SOURCES,
     vars: {
       // Background — noir neutre (match le footer du site emma-matelas.fr)
       "--bg":           "#121212",
@@ -93,6 +133,7 @@ const THEMES = {
     brandHtml: '<span>SUD </span><span class="highlight">CUISINE</span>',
     logoUrl:   "img/imgSudCuisine.png",
     axes:      AXES_CUISINE,
+    sources:   SOURCES,
     vars: {
       // Background — warm charcoal (olive/kaki foncé)
       "--bg":           "#2f2e26",
