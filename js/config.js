@@ -246,6 +246,12 @@ const CLIENTS = {
   },
 
   // ── EMMA ──────────────────────────────────────────────────────────────
+  "emma-lyon-saint-priest": {
+    brand:    "emma",
+    city:     "Lyon Saint-Priest",
+    sheetId:  "1yVM_VuiwhB6PKsNEIUz8uBN5aszhSebyvzNgSqqIiTA",
+    statsUrl: STATS_URL,
+  },
   "emma-merignac": {
     brand:    "emma",
     city:     "Merignac",
