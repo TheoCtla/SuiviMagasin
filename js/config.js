@@ -191,7 +191,7 @@ const THEMES = {
 //    2. Ajouter les magasins dans CLIENTS en pointant sur `brand: "<nouvel-id>"`
 //    3. Pas besoin d'un nouveau Apps Script ni d'un nouveau déploiement.
 // ────────────────────────────────────────────────────────────────
-const STATS_URL = "https://script.google.com/macros/s/AKfycbyeuVVWylBZfOgCve-X44xJnNjFPHiI5ZTFo5HnGmymc44Yxwrn1Bfb_ATbisvWFRpjSQ/exec";
+const STATS_URL = "https://script.google.com/macros/s/AKfycbwWqLfjUi8C7tscxLiQfMDKIBU_E2QdwvXZrfvV9MSajzNU2wp9VxoZ9LQ4rHwC2CMeOA/exec";
 
 const CLIENTS = {
 
