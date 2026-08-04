@@ -246,6 +246,18 @@ const CLIENTS = {
   },
 
   // ── EMMA ──────────────────────────────────────────────────────────────
+  "emma-annecy": {
+    brand:    "emma",
+    city:     "Annecy",
+    sheetId:  "1KHo_ecvgnxHzli3AJ1o5zopOe5FLWCIw6NasoycQPCE",
+    statsUrl: STATS_URL,
+  },
+  "emma-annemasse": {
+    brand:    "emma",
+    city:     "Annemasse",
+    sheetId:  "1xlyZy0fImQUX3kEkHKqH8XqDBuzZyb2M5AWTua2Ehmc",
+    statsUrl: STATS_URL,
+  },
   "emma-lyon-saint-priest": {
     brand:    "emma",
     city:     "Lyon Saint-Priest",
