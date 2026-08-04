@@ -14,6 +14,8 @@ Format : `Nom du magasin : slug Webflow`
 
 ## 🛏️ Emma
 
+- Emma Annecy : `emma-annecy`
+- Emma Annemasse : `emma-annemasse`
 - Emma Lyon Saint-Priest : `emma-lyon-saint-priest`
 - Emma Merignac : `emma-merignac`
 - Emma Nantes : `emma-nantes`
